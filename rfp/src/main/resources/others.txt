@@ -1,0 +1,49 @@
+// @Override
+    // public RFP createRFP(RfpDTO rfpDTO) {
+    // RFP rfp = RFPMapper.toRFP(rfpDTO, new RFP());
+    // if (rfpDTO.getSubcontractingGoalDTO() != null &&
+    // !rfpDTO.getSubcontractingGoalDTO().isEmpty()) {
+    // List<SubcontractingGoal> goals = rfpDTO.getSubcontractingGoalDTO().stream()
+    // .map(goalDTO -> {
+    // SubcontractingGoal goal =
+    // SubContractingGoalsMapper.toSubcontractingGoal(goalDTO,
+    // new SubcontractingGoal());
+    // goal.setRfp(rfp);
+    // return goal;
+    // })
+    // .toList();
+    // rfp.setSubcontractingGoals(goals);
+    // }
+    // if (rfpDTO.getChecklistDTO() != null && !rfpDTO.getChecklistDTO().isEmpty())
+    // {
+    // List<Checklist> cheques = rfpDTO.getChecklistDTO().stream()
+    // .map(checkList -> {
+    // Checklist cl = ChecklistMapper.toChecklist(checkList, new Checklist());
+    // PreBidConference pc = PreBidConferenceMapper
+    // .toPreBidConference(checkList.getPreBidConferenceDTO(), new
+    // PreBidConference());
+    // log.info("BID CONF - " + pc.toString());
+    // if (pc != null) {
+    // pc.setChecklist(cl);
+    // cl.setBidConference(pc);
+    // }
+    // cl.setRfp(rfp);
+    // return cl;
+    // })
+    // .toList();
+    // rfp.setChecklists(cheques);
+    // }
+
+    // if (rfpDTO.getDocumentDTO() != null && !rfpDTO.getDocumentDTO().isEmpty()) {
+    // List<Documents> documents = rfpDTO.getDocumentDTO().stream()
+    // .map(doc -> {
+    // Documents document = DocumentMapper.toDocument(doc, new Documents());
+    // document.setRfp(rfp);
+    // return document;
+    // }).toList();
+    // rfp.setDocuments(documents);
+    // }
+
+    // return rfpRepository.save(rfp);
+
+    // }

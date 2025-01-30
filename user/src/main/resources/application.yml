@@ -1,0 +1,22 @@
+spring:
+    application:
+        name: user
+    output:
+        ansi:
+            enabled: always
+    datasource:
+        url: jdbc:mysql://localhost:3306/rfp
+        username: root
+        password: root
+    security:
+        user:
+            name: pavan
+            password: pavan 
+    sql:
+        init:
+            mode: always
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        show-sql: true
+        defer-datasource-initialization: true
