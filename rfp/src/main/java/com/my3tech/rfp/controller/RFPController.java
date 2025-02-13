@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.my3tech.rfp.dto.RfpDTO;
-import com.my3tech.rfp.dto.RfpUpdateDTO;
 import com.my3tech.rfp.entity.RFP;
 import com.my3tech.rfp.service.IRFPService;
 
@@ -40,7 +39,7 @@ public class RFPController {
     }
 
     @PutMapping
-    public ResponseEntity<RFP> updateRFP(@RequestBody RfpUpdateDTO rfpDTO) {
+    public ResponseEntity<RFP> updateRFP(@RequestBody RfpDTO rfpDTO) {
         return ResponseEntity.ok(rfpService.updateRFP(rfpDTO));
     }
 }

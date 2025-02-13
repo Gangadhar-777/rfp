@@ -6,10 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class ChecklistDTO {
+    private Long id;
     private String letterOfIntentRequired;
     private String preBidConference;
     private LocalDateTime questionsDue;
@@ -18,6 +20,6 @@ public class ChecklistDTO {
     private String instructions;
     private LocalDateTime submissionDue;
     private LocalDateTime bidOpeningDate;
+    private PrebidConferenceDTO conference;
     private String status;
-    private PreBidConferenceDTO preBidConferenceDTO;
 }

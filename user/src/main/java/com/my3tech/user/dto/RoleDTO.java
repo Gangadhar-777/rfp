@@ -8,5 +8,6 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class RoleDTO {
+    private String id;
     private String roleName;
 }

@@ -8,6 +8,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,13 +26,25 @@ public class User extends BaseEntity {
 
     @Column(unique = true)
     private String email;
+
     private String password;
+
     private Boolean isActive = true;
     private Boolean isLocked = false;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserProfile userProfile;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private Set<Roles> roles;
+
+    public void setUserProfile(UserProfile profile) {
+        this.userProfile = profile;
+        if (profile != null) {
+            profile.setUser(this); 
+        }
+    }
 
     public void addRole(Roles role) {
         if (roles == null || roles.isEmpty()) {

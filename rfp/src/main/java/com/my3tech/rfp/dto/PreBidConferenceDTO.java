@@ -7,9 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class PreBidConferenceDTO {
+@NoArgsConstructor
+public class PrebidConferenceDTO {
+    private Long id;
     private LocalDateTime preBidDate;
     private String status;
 }

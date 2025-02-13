@@ -1,46 +1,25 @@
 package com.my3tech.rfp.mapper;
 
-import com.my3tech.rfp.dto.PreBidConferenceDTO;
-import com.my3tech.rfp.dto.PreBidConferenceUpdateDTO;
+import java.util.List;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
+import com.my3tech.rfp.dto.PrebidConferenceDTO;
 import com.my3tech.rfp.entity.PreBidConference;
 
-public class PreBidConferenceMapper {
-    public static PreBidConferenceDTO toPreBidConferenceDTO(PreBidConference conf, PreBidConferenceDTO dto) {
-        if (conf != null && dto != null) {
-            dto.setPreBidDate(conf.getPreBidDate());
-            dto.setStatus(conf.getStatus());
-            return dto;
-        }
-        return null;
-    }
+@Mapper(componentModel = "spring")
+public interface PrebidConferenceMapper {
+    PrebidConferenceDTO toDTO(PreBidConference conference);
 
-    public static PreBidConferenceUpdateDTO toUpdatePreBidConferenceDTO(PreBidConference conf,
-            PreBidConferenceUpdateDTO dto) {
-        if (conf != null && dto != null) {
-            dto.setId(conf.getId());
-            dto.setPreBidDate(conf.getPreBidDate());
-            dto.setStatus(conf.getStatus());
-            return dto;
-        }
-        return null;
-    }
+    @Mapping(target = "createdBy", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "updatedBy", ignore = true)
+    @Mapping(target = "checklist", ignore = true)
+    PreBidConference toNormal(PrebidConferenceDTO dto);
 
-    public static PreBidConference toPreBidConference(PreBidConferenceDTO dto, PreBidConference conf) {
-        if (conf != null && dto != null) {
-            conf.setStatus(dto.getStatus());
-            conf.setPreBidDate(dto.getPreBidDate());
-            return conf;
-        }
-        return null;
-    }
 
-    public static PreBidConference toUpdatePreBidConference(PreBidConferenceUpdateDTO dto, PreBidConference conf) {
-        if (conf != null && dto != null) {
-            conf.setId(dto.getId());
-            conf.setStatus(dto.getStatus());
-            conf.setPreBidDate(dto.getPreBidDate());
-            return conf;
-        }
-        return null;
-    }
+    List<PrebidConferenceDTO> toDTOList(List<PreBidConference> conferences);
+    List<PreBidConference> toNormal(List<PrebidConferenceDTO> dtos);
 }

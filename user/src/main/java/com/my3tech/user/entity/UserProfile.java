@@ -3,6 +3,7 @@ package com.my3tech.user.entity;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,5 +27,6 @@ public class UserProfile extends BaseEntity {
     private String bio;
 
     @OneToOne
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
 }

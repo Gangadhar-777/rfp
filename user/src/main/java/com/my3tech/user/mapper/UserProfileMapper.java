@@ -1,28 +1,33 @@
 package com.my3tech.user.mapper;
 
+import java.util.List;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
 import com.my3tech.user.dto.UserProfileDTO;
 import com.my3tech.user.entity.UserProfile;
+import com.my3tech.user.security.RegistrationRequest;
 
-public class UserProfileMapper {
-    public static UserProfile toUserProfile(UserProfileDTO userProfileDTO, UserProfile userProfile) {
-        userProfile.setFirstName(userProfileDTO.getFirstName());
-        userProfile.setLastName(userProfileDTO.getLastName());
-        userProfile.setAddress(userProfileDTO.getAddress());
-        userProfile.setDateOfBirth(userProfileDTO.getDateOfBirth());
-        userProfile.setPhoneNumber(userProfileDTO.getPhoneNumber());
-        userProfile.setBio(userProfileDTO.getBio());
-        userProfile.setGender(userProfileDTO.getGender());
-        return userProfile;
-    }
+@Mapper(componentModel = "spring")
+public interface UserprofileMapper {
+    @Mapping(source = "uuid", target = "id")
+    UserProfileDTO profileToProfileDTO(UserProfile profile);
 
-    public static UserProfileDTO toUserProfileDTO(UserProfile userProfile, UserProfileDTO userProfileDTO) {
-        userProfileDTO.setFirstName(userProfile.getFirstName());
-        userProfileDTO.setLastName(userProfile.getLastName());
-        userProfileDTO.setAddress(userProfile.getAddress());
-        userProfileDTO.setDateOfBirth(userProfile.getDateOfBirth());
-        userProfileDTO.setPhoneNumber(userProfile.getPhoneNumber());
-        userProfileDTO.setBio(userProfile.getBio());
-        userProfileDTO.setGender(userProfile.getGender());
-        return userProfileDTO;
-    }
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "user", ignore = true)
+    @Mapping(source = "id", target = "uuid")
+    UserProfile profileDTOtoProfile(UserProfileDTO dto);
+    
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "uuid", ignore = true)
+    @Mapping(target = "user", ignore = true)
+    UserProfile toUserProfile(RegistrationRequest request);
+
+    List<UserProfile> profileDTOtoProfileList(List<UserProfileDTO> dtos);
+
+    List<UserProfileDTO> profileToProfileDTOList(List<UserProfile> profiles);
 }
